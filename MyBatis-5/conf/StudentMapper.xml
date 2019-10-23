@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.turing.Mapper.Mapper">
+  <!-- 
+       resultMap:自定义返回类型
+       type:你要关联到哪个类型上
+       id:标识
+   -->
+   <resultMap type="Student" id="Student_Mapping">
+   <!-- 
+      id:主键映射
+      result:非主键映射
+               建议都配上reasultMap
+    -->
+       <id column="id" property="id"></id>
+       <result column="nname" property="nname"></result> 
+       <result column="sal" property="sal"></result> 
+       <result column="addryes" property="addryes"></result> 
+   </resultMap>
+   
+   <!-- public List<Student> listPager2(); -->
+ 	<select id="listPager2" resultType="Student">
+ 		select * from yuanggong
+ 	</select>
+ 	
+</mapper>

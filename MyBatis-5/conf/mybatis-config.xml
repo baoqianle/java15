@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 配置 -->
+<configuration>
+  <!-- 多个环境 -->
+  <properties resource="dbconfig.properties"></properties>
+  <typeAliases>
+      <!-- 自动扫描包及其子包 下的所有类，给每个类设置默认的别名 -->
+      <package name="com.turing.entity"/>
+  </typeAliases>
+ <!-- <typeAliases>
+      <typeAlias type="com.turing.entity.Student" alias="Student"></typeAlias>
+  </typeAliases> -->
+  	<environments default="development">
+		<!-- 
+		    environment:一个环境 
+		    id:给该环境取一个标识符
+		 -->
+		<environment id="development">
+			<!--
+			       事务管理： 使用JDBC自带的 
+			-->
+			<transactionManager type="JDBC" />
+			<!-- 
+			     dataSource:数据源，POOLED就是数据源的一个默认实例
+			     type:默认数据源POOLED,大写，不要修改
+			 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+  <!-- mappers:映射文件列表 -->
+  <mappers>
+      <!-- mapper:某一个映射 -->
+   <!-- <mapper resource="StudentMapper.xml"/> -->
+	   <mapper resource="com/turing/Mapper/DeptMapper.xml"/>
+	   <mapper resource="com/turing/Mapper/EmpMapper.xml"/>
+  </mappers>
+</configuration>
